@@ -10,8 +10,8 @@ Make sure <strong>Python 3.7+ is installed</strong> and you can access it from t
 ### Linux/Unix
 
 ```console
-$ git clone https://github.com/supimadi/primaseru
-$ cd primaseru
+$ git clone https://github.com/supimadi/nongkies
+$ cd nongkies
 $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
@@ -21,8 +21,8 @@ $ py manage.py runserver
 
 ### Windows
 ```console
-> git clone https://github.com/supimadi/primaseru
-> cd primaseru
+> git clone https://github.com/supimadi/nongkies
+> cd nongkies
 > py -m venv venv
 
 > .\venv\Scripts\Activate.ps1 # for powershell or
