@@ -1,0 +1,484 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nongkies</title>
+
+    <link rel="shortcut icon" type="image/png" href="./assets/logo_primary.png" />
+    <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.2.1/dist/css/splide.min.css" media="all">
+
+    {% block head %}
+    {% endblock head %}
+
+    <script src="https://kit.fontawesome.com/016478e505.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+  {% block navbar %}
+  <nav class="navbar is-transparent is-dark is-fixed-top bg-0 is-spaced" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="{% static 'assets/logo_primary.png' %}">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarNongkies">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarNongkies" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="#home-section">
+            Home
+          </a>
+
+          <a class="navbar-item" href="#nearby-section">
+            Nearby
+          </a>
+
+           <a class="navbar-item" href="#reserve-section">
+            Reserve
+          </a>
+
+          <a class="navbar-item" href="#about-us-section">
+            About
+          </a>
+          
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-white has-text-primary is-rounded" href="{% url 'login' %}">
+                <strong>Login</strong>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% endblock navbar %}
+
+  {% block main %}
+  <section class="section heading" id="home-section">
+    <div class="container pt-6">
+      <h2 class="title is-6">
+        Easy Chill Nongkies <span class="has-text-info">Here!</span>
+      </h2>
+      <h1>
+        <span class="title">Nongkrong Berkualitas</span> <br>
+        <span class="subtitle is-3">& Estetis.</span>
+      </h1>
+      <p class="subtitle mt-3 w-50">
+        Cari tempat nongkrong favoritmu dengan mudah dan cepat bersama nongkies.
+      </p>
+
+      <div class="field is-grouped">
+        <p class="control">
+          <button class="button is-rounded is-primary">
+            <span>Get Started</span>
+            <span class="icon is-small"> 
+              <i class="fa-solid fa-circle"></i>
+            </span>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-rounded">
+            <span>See Live Demo</span>
+            <span class="icon is-small has-text-primary">
+              <i class="fa-solid fa-circle-play"></i>
+            </span>
+          </button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="box container" style="top: -11vh">
+      <div class="is-flex is-justify-content-space-around" style="display: flex">
+        <img src="{% static 'assets/ig_logo.svg' %}" alt="instagram logo">
+        <img src="{% static 'assets/fb_logo.svg' %}" alt="facebook logo">
+        <img src="{% static 'assets/tiktok_logo.png' %}" alt="tiktok logo" style="width: 15%">
+        <img src="{% static 'assets/yt_logo.svg' %}" alt="youtube logo">
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0 bg-doodle-1" id="about-us-section">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column">
+          <h2 class="subtitle has-text-primary">
+            <b>ABOUT US</b>
+          </h2>
+          <h1 class="title">
+            Your Happiness is The <br>
+            Best MakeUp
+          </h1>
+          <p>
+            Nongkies hadir untuk memberikan informasi
+            mengenai tempat nongkrong terdekat, estetis
+            dan murah. Edward Eninfull, dengan orang-
+            orang berkumpul dan merayakan ide 
+            kebersamaan, hal-hal besar dapat terjadi.
+          </p>
+          <button class="button is-rounded is-primary is-light mt-3">
+            <span><strong>More Details</strong></span>
+            <span class="icon is-small has-text-primary">
+              <i class="fa-solid fa-circle-play"></i>
+            </span>
+          </button>
+        </div>
+
+        <div class="column ">
+          <img class="img-rounded border-white" src="{% static 'assets/pexels-tim-douglas-6205498.jpg' %}" alt="meetup image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="nearby-section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title mb-1">
+            Nearby
+          </h1>
+          <p>
+            Mager? di sekitarmu ada tempat nongkrong loh
+          </p>
+          <form action="" method="POST" class="mt-3">
+            <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="Cari tempat nongkrong">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-magnifying-glass"></i>
+                </span>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="column is-one-quarter is-flex is-align-items-center">
+          <img class="mb-0 mt-auto" src="{% static 'assets/logo_primary.png' %}" alt="nongkies logo">
+        </div>
+      </div>
+
+      <div class="buttons are-small is-justify-content-space-between">
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-solid fa-sliders"></i>
+            </span>
+            <span>Filter</span>
+        </button>
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-regular fa-circle-down"></i>
+            </span>
+            <span>Urutan</span>
+        </button>
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-regular fa-star"></i>
+            </span>
+            <span>Lagi Hits</span>
+        </button>
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-regular fa-money-bill-1"></i>
+            </span>
+            <span>Lagi Ada Promo</span>
+        </button>
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-regular fa-clock"></i>
+            </span>
+            <span>24 Jam Nih</span>
+        </button>
+        <button class="button is-rounded is-primary">
+            <span class="icon is-small">
+              <i class="fa-regular fa-shuffle"></i>
+            </span>
+            <span>Acak</span>
+        </button>
+      </div>
+
+      <!-- CAFE CONTAINER -->
+      <div class="cafe-container mt-5 is-flex is-justify-content-space-between">
+        <div class="cafe-item has-text-centered">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FmZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+            alt="cafe image"
+            class="shadow"
+          >
+          <h3 class="has-text-primary mt-3">
+            Memories Coffee
+          </h3>
+          <h6>
+            1.9 Km
+          </h6>
+        </div>
+
+        <div class="cafe-item has-text-centered">
+          <img
+            src="https://media.istockphoto.com/photos/empty-cafe-interior-with-chairs-and-tables-picture-id1286692956?b=1&k=20&m=1286692956&s=170667a&w=0&h=PGjBVMeX_zHAEO_6ZPipHTfQx5zoQBOU24Z4bG4Xqsk="
+            alt="cafe image"
+            class="shadow"
+          >
+          <h3 class="has-text-primary mt-3">
+            Secret Garden
+          </h3>
+          <h6>
+            2.0 Km
+          </h6>
+        </div>
+
+        <div class="cafe-item has-text-centered">
+          <img
+            src="https://media-cdn.tripadvisor.com/media/photo-s/1c/0d/58/75/interior.jpg"
+            alt="cafe image"
+            class="shadow"
+          >
+          <h3 class="has-text-primary mt-3">
+            Kopi Djiwa
+          </h3>
+          <h6>
+            2.4 Km
+          </h6>
+        </div>
+
+        <div class="cafe-item has-text-centered">
+          <img
+            src="https://www.ruparupa.com/blog/wp-content/uploads/2021/10/cafe-indoor-.jpg"
+            alt="cafe image"
+            class="shadow"
+          >
+          <h3 class="has-text-primary mt-3">
+            Pandawa Cafe
+          </h3>
+          <h6>
+            3.0 Km
+          </h6>
+        </div>
+
+        <div class="cafe-item has-text-centered">
+          <img
+            src="https://dev.ipb.ac.id/media/images/fasilitas-cafe-ipb.jpg"
+            alt="cafe image"
+            class="shadow"
+          >
+          <h3 class="has-text-primary mt-3">
+            Janji Jiwa
+          </h3>
+          <h6>
+            3.0 Km
+          </h6>
+        </div>
+      </div>
+      <!-- END CAFE CONTAINER -->
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <h1 class="title has-text-primary">
+          <i class="fa-solid fa-circle-arrow-down"></i>
+        </h1>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="reserve-section">
+    <div class="container has-text-centered">
+
+      <h2 class="subtitle is-4 has-text-primary">
+        <b>RESERVE</b>
+      </h2>
+      <h1 class="title">
+          Our Recommendation Places
+      </h1>
+      <p class="subtitle">
+        Berikut adalah rekomendasi tempat nongkrong yang sering dikunjungi kalangan remaja.
+      </p>
+
+      <section class="splide" aria-labelledby="carousel-heading">
+        <div class="splide__track">
+              <ul class="splide__list">
+                  <li class="splide__slide">
+                    <div class="cafe-place">
+                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
+                      <div class="overlay">
+                        <div class="text pl-3 pb-3 has-text-left">
+                          <button class="button is-rounded is-primary is-light is-small">Review</button>
+                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
+                          <p class="subtitle" style="color: white;">
+                            Classy, compy, and huge cafe
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="splide__slide">
+                    <div class="cafe-place">
+                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
+                      <div class="overlay">
+                        <div class="text pl-3 pb-3 has-text-left">
+                          <button class="button is-rounded is-primary is-light is-small">Review</button>
+                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
+                          <p class="subtitle" style="color: white;">
+                            Classy, compy, and huge cafe
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="splide__slide">
+                    <div class="cafe-place">
+                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
+                      <div class="overlay">
+                        <div class="text pl-3 pb-3 has-text-left">
+                          <button class="button is-rounded is-primary is-light is-small">Review</button>
+                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
+                          <p class="subtitle" style="color: white;">
+                            Classy, compy, and huge cafe
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+              </ul>
+        </div>
+      </section>
+
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h2 class="subtitle has-text-primary"><b>CONTACT US</b></h2>
+          <h1 class="title">
+            Let's Know If You <br>
+            Need <span class="has-text-weight-light">Help</span>
+          </h1>
+          <p>
+            You may contact us from below information <br>
+            <strong>+62 8219 0836 175</strong>
+          </p>
+          <div class="is-flex mt-3">
+            <figure class="image mr-3 is-32x32">
+              <img src="{% static 'assets/whatsapp.png' %}" alt="whatsapp">
+            </figure>
+            <figure class="image mr-3 is-32x32">
+              <img src="{% static 'assets/facebook.png' %}" alt="facebook">
+            </figure>
+            <figure class="image mr-3 is-32x32">
+              <img src="{% static 'assets/instagram.png' %}" alt="instagram">
+            </figure>
+            <figure class="image mr-3 is-32x32">
+              <img src="{% static 'assets/gmail.png' %}" alt="gmail">
+            </figure>
+            <figure class="image mr-3 is-32x32">
+              <img src="{% static 'assets/tiktok.png' %}" alt="tiktok">
+            </figure>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title">Get in Touch</h2>
+          <p class="subtitle">
+            Feel free to drop us, a line below!
+          </p>
+          <form action="" method="POST">
+            <div class="field mb-5">
+              <div class="control">
+                <input class="input" type="text" placeholder="Name">
+              </div>
+            </div>
+
+            <div class="field mb-5">
+              <div class="control">
+                <input class="input" type="email" placeholder="Email">
+              </div>
+            </div>
+
+            <div class="field mb-5">
+              <div class="control">
+                <textarea class="textarea" placeholder="Message"></textarea>
+              </div>
+            </div>
+            <button class="button is-rounded is-primary mt-3">
+              <strong>SUBMIT</strong>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section has-bg-white">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <img src="{% static 'assets/logo_primary.png' %}" width="75%" alt="logo primary">
+          <h3 class="subtitle is-5 mt-3 mb-1">nongkies@gmail.com</h3>
+          <p class="mb-3">
+            +62 8219 0836 175
+          </p>
+          <button class="button is-rounded is-primary">
+            <span>Live Chat</span>
+            <span class="icon is-small"> 
+              <i class="fa-solid fa-circle"></i>
+            </span>
+          </button>
+        </div>
+
+        <div class="column">
+          <h3 class="title is-4">About Us.</h3>
+          <h2 class="title is-6 has-text-grey">Home</h2>
+          <h2 class="title is-6 has-text-grey">Nearby</h2>
+          <h2 class="title is-6 has-text-grey">Reserve</h2>
+          <h2 class="title is-6 has-text-grey">About</h2>
+          <h2 class="title is-6 has-text-grey">Login</h2>
+        </div>
+
+        <div class="column">
+          <h3 class="title is-4">Ask a Question?</h3>
+          <h2 class="title is-6 has-text-grey">Nongkies itu apa?</h2>
+          <h2 class="title is-6 has-text-grey">Cafe terunik dimana?</h2>
+          <h2 class="title is-6 has-text-grey">Nongkrong dimana saja?</h2>
+          <h2 class="title is-6 has-text-grey">Cara booking tempat gimana?</h2>
+          <h2 class="title is-6 has-text-grey">Cara nongkrong di nongkies?</h2>
+        </div>
+
+        <div class="column">
+          <h3 class="title is-4">Our Address.</h3>
+          <h2 class="title is-6 has-text-grey">
+            Telkom, Bandung <br>
+            Indonesia
+          </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock main %}
+
+  <footer class="footer has-background-primary has-text-white py-4 has-text-centered">
+    &#169; 2022 Copyright all right reserved - Nongkies
+  </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.2.1/dist/js/splide.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>
