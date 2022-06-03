@@ -53,9 +53,15 @@
           
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-white has-text-primary is-rounded" href="{% url 'login' %}">
-                <strong>Login</strong>
-              </a>
+              {% if user.is_authenticated %}
+                <a class="button is-white has-text-primary is-rounded" href="{% url 'login' %}">
+                  <strong>Profile</strong>
+                </a>
+              {% else %}
+                <a class="button is-white has-text-primary is-rounded" href="{% url 'login' %}">
+                  <strong>Login</strong>
+                </a>
+              {% endif %}
             </div>
           </div>
           
@@ -64,6 +70,7 @@
     </div>
   </nav>
   {% endblock navbar %}
+
 
   {% block main %}
   <section class="section heading" id="home-section">
@@ -214,6 +221,7 @@
 
       <!-- CAFE CONTAINER -->
       <div class="cafe-container mt-5 is-flex is-justify-content-space-between">
+        {% for cafe in cafes %}
         <div class="cafe-item has-text-centered">
           <img
             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FmZXxlbnwwfHwwfHw%3D&w=1000&q=80"
@@ -221,70 +229,17 @@
             class="shadow"
           >
           <h3 class="has-text-primary mt-3">
-            Memories Coffee
+            {{ cafe.name }} <br>
+            Rating: {{ cafe.rating }}
           </h3>
           <h6>
-            1.9 Km
+            {{ cafe.distance }} Km
           </h6>
         </div>
+        {% endfor %}
 
-        <div class="cafe-item has-text-centered">
-          <img
-            src="https://media.istockphoto.com/photos/empty-cafe-interior-with-chairs-and-tables-picture-id1286692956?b=1&k=20&m=1286692956&s=170667a&w=0&h=PGjBVMeX_zHAEO_6ZPipHTfQx5zoQBOU24Z4bG4Xqsk="
-            alt="cafe image"
-            class="shadow"
-          >
-          <h3 class="has-text-primary mt-3">
-            Secret Garden
-          </h3>
-          <h6>
-            2.0 Km
-          </h6>
-        </div>
-
-        <div class="cafe-item has-text-centered">
-          <img
-            src="https://media-cdn.tripadvisor.com/media/photo-s/1c/0d/58/75/interior.jpg"
-            alt="cafe image"
-            class="shadow"
-          >
-          <h3 class="has-text-primary mt-3">
-            Kopi Djiwa
-          </h3>
-          <h6>
-            2.4 Km
-          </h6>
-        </div>
-
-        <div class="cafe-item has-text-centered">
-          <img
-            src="https://www.ruparupa.com/blog/wp-content/uploads/2021/10/cafe-indoor-.jpg"
-            alt="cafe image"
-            class="shadow"
-          >
-          <h3 class="has-text-primary mt-3">
-            Pandawa Cafe
-          </h3>
-          <h6>
-            3.0 Km
-          </h6>
-        </div>
-
-        <div class="cafe-item has-text-centered">
-          <img
-            src="https://dev.ipb.ac.id/media/images/fasilitas-cafe-ipb.jpg"
-            alt="cafe image"
-            class="shadow"
-          >
-          <h3 class="has-text-primary mt-3">
-            Janji Jiwa
-          </h3>
-          <h6>
-            3.0 Km
-          </h6>
-        </div>
-      </div>
       <!-- END CAFE CONTAINER -->
+      </div>
 
       <div style="text-align: center; margin-top: 2rem;">
         <h1 class="title has-text-primary">
@@ -474,9 +429,11 @@
   </section>
   {% endblock main %}
 
+  {% block footer %}
   <footer class="footer has-background-primary has-text-white py-4 has-text-centered">
     &#169; 2022 Copyright all right reserved - Nongkies
   </footer>
+  {% endblock footer %}
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.2.1/dist/js/splide.min.js"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>

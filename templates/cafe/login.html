@@ -1,3 +1,49 @@
+{% extends 'cafe/home.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block navbar %}
+{% endblock navbar %}
 
 {{ form|crispy }}
+{% block main %}
+  <section class="section bg-doodle-1" id="about-us-section" style="height: 100vh">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column">
+
+          <div class="card has-background-light">
+            <div class="card-content">
+              <div class="content">
+                <h3>Silahkan Login</h3>
+                <p>
+                  Silahkan login untuk mendapatkan fitur yang lebih menarik lagi 🎉🎉.
+                </p>
+
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  {{ form|crispy }}
+                  <div class="field is-grouped">
+                    <div class="control">
+                      <button type="submit" class="button is-link">Submit</button>
+                    </div>
+                    <div class="control">
+                      <a href="/" class="button is-link is-light">Kembali</a>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- END CONTENT -->
+              </div>
+            </div>
+          </div>
+
+          <!-- END COLUMN -->
+      </div>
+    </div>
+  </section>
+{% endblock main %}
+
+{% block footer %}
+{% endblock footer %}
