@@ -136,6 +136,9 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Authentication setting(s)
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = 'home-page'
 
 # Crispy forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = (

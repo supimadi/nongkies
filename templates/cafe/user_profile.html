@@ -1,0 +1,87 @@
+{% extends 'cafe/home.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{{ form|crispy }}
+{% block main %}
+  <section class="section bg-doodle-1" id="about-us-section" style="height: 100vh">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column">
+
+          <div class="card has-background-light">
+            <div class="card-content">
+              <div class="content">
+
+				<!-- HEADERS -->
+				<div class="columns">
+				  <div class="column">
+					<figure class="image is-128x128">
+						{% if reviewer.bio %}
+							<img class="is-rounded" src="{{ reviewer.picture.url }}">
+						{% else %}
+					  		<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+						{% endif %}
+					</figure>
+				  </div>
+				  <div class="column is-four-fifths">
+					<h3>{{ user.username }}</h3>
+					<p class="mr-5 has-text-grey">
+					  	{% if reviewer.bio %}
+					  		{{ reviewer.bio }}
+						{% else %}
+						  	Silahkan edit profile mu 😊
+						{% endif %}
+					</p>
+					<div class="buttons">
+						<a href="{% url 'update-profile' reviewer.pk %}" class="button is-primary is-light">Edit Profile</a>
+					  <a href="{% url 'logout' %}" class="button is-secondary is-light">Logout</a>
+					</div>
+				  </div>
+				</div>
+
+				<hr class="has-text-grey">
+				
+				<!-- Reviewed cafes -->
+				<nav class="panel" style="box-shadow: none; border: 1px solid hsl(0, 0%, 85%);">
+				  <p class="panel-heading">
+					Reviewed Cafes
+				  </p>
+				  <div class="panel-block">
+					<p class="control has-icons-left">
+					  <input class="input" type="text" placeholder="Search">
+					  <span class="icon is-left">
+						<i class="fas fa-search" aria-hidden="true"></i>
+					  </span>
+					</p>
+				  </div>
+				  <p class="panel-tabs">
+					<a class="is-active">Reviewed</a>
+					<a class="">Not Yet Reviewed</a>
+				  </p>
+				  <a class="panel-block">
+					<span class="panel-icon">
+					  <i class="fas fa-mug-saucer" aria-hidden="true"></i>
+					</span>
+					bulma
+				  </a>
+				</nav>			
+
+
+                <!-- END CONTENT -->
+              </div>
+            </div>
+          </div>
+
+          <!-- END COLUMN -->
+      </div>
+    </div>
+  </section>
+{% endblock main %}
+
+{% block footer %}
+{% endblock footer %}

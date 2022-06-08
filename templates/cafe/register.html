@@ -16,18 +16,19 @@
           <div class="card has-background-light">
             <div class="card-content">
               <div class="content">
-                <h3>Silahkan Login</h3>
+                <h3>Silahkan Membuat Akun</h3>
                 <p>
-                  Silahkan login untuk mendapatkan fitur yang lebih menarik lagi 🎉🎉. Belum mempunyai akun? Buat
-                  <a href="{% url 'register' %}">disini.</a>
+                  Silahkan membuat akun untuk mendapatkan fitur yang lebih menarik lagi 🎉🎉.
                 </p>
 
                 <form action="" method="POST">
-                  {% csrf_token %}
-                  {{ form|crispy }}
+                  <div class="rounded border p-3 mb-3">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                  </div>
                   <div class="field is-grouped">
                     <div class="control">
-                      <button type="submit" class="button is-link">Login</button>
+                      <button type="submit" class="button is-link">Buat Akun</button>
                     </div>
                     <div class="control">
                       <a href="/" class="button is-link is-light">Kembali</a>

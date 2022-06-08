@@ -2,6 +2,13 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+class Reviewer(models.Model):
+    account = models.ForeignKey(User, on_delete=models.CASCADE)
+    bio = models.CharField("Bio", max_length=120, help_text="Ceritakan diri kamu dalam 120 character!")
+    picture = models.ImageField("Profile Picture", null=True)
+
+    def __str__(self):
+        return self.account.username
 
 class Cafes(models.Model):
     name = models.CharField("Nama Cafe", max_length=100)
@@ -20,7 +27,7 @@ class Cafes(models.Model):
         return self.name
 
 class CafeReview(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
     cafe = models.ForeignKey(Cafes, on_delete=models.CASCADE)
     review_text = models.TextField()
     

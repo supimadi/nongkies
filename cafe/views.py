@@ -1,8 +1,13 @@
 from django.urls import reverse_lazy
-from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect, render
+from django.views.generic import UpdateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
-from .models import Cafes
+from .models import Cafes, Reviewer
 
 def home_page(request):
     ctx = {
@@ -11,9 +16,45 @@ def home_page(request):
 
     return render(request, "cafe/home.html", ctx)
 
+@login_required
 def user_profile(request):
-    return render(request, "cafe/user_profile.html")
+    reviewer = Reviewer.objects.get(account=request.user.pk)
+
+    return render(request, "cafe/user_profile.html", {"reviewer": reviewer})
+
+def register(request):
+    form = UserCreationForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+
+        user = authenticate(
+            request, username=form.cleaned_data["username"],
+            password=form.cleaned_data["password2"]
+        )
+        login(request, user)
+
+        return redirect('profile')
+
+    return render(request, "cafe/register.html", {"form": form})
 
 class LoginUser(LoginView):
     template_name = "cafe/login.html"
-    success_url = reverse_lazy('home')
+
+class LogoutUser(LogoutView):
+    template_name = "cafe/logout.html"
+
+class UpdateProfileView(UserPassesTestMixin, UpdateView):
+    model = Reviewer
+    template_name = "cafe/update_profile.html"
+    success_url = reverse_lazy("profile")
+    fields = ["bio", "picture"]
+
+    def test_func(self):
+        profile = Reviewer.objects.get(pk=self.kwargs["pk"])
+
+        if profile.account.pk == self.request.user.pk:
+            return True
+        else:
+            return False
+
