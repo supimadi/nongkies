@@ -141,11 +141,11 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGOUT_REDIRECT_URL = 'home-page'
 
 # Crispy forms settings
-CRISPY_ALLOWED_TEMPLATE_PACKS = (
-    "bulma",
-)
+#  CRISPY_ALLOWED_TEMPLATE_PACKS = (
+#      "bulma",
+#  )
 
-CRISPY_TEMPLATE_PACK = "bulma"
+#  CRISPY_TEMPLATE_PACK = "bulma"
 
 import django_heroku
 django_heroku.settings(locals())

@@ -24,7 +24,7 @@
                 <form action="" method="POST">
                   <div class="rounded border p-3 mb-3">
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    {{ form.as_p }}
                   </div>
                   <div class="field is-grouped">
                     <div class="control">

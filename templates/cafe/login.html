@@ -24,7 +24,7 @@
 
                 <form action="" method="POST">
                   {% csrf_token %}
-                  {{ form|crispy }}
+                  {{ form.as_p }}
                   <div class="field is-grouped">
                     <div class="control">
                       <button type="submit" class="button is-link">Login</button>
