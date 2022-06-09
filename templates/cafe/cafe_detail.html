@@ -1,0 +1,62 @@
+{% extends 'cafe/home.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block main %}
+  <section class="section bg-doodle-1" id="about-us-section" style="height: 100vh">
+    <div class="container">
+      <div class="columns">
+
+
+        <div class="column">
+          <figure class="image">
+            <img src="{{ cafe.image.url }}" alt="cafe-image" class="rounded">
+          </figure>
+        </div>
+
+        <div class="column">
+          <div class="card has-background-light">
+            <div class="card-content">
+              <div class="content">
+                <h3>{{ cafe.name }} <span class="tag is-warning">{{ cafe.rating }}</span></h3>
+                <p>
+                  {{ cafe.desc }}
+                </p>
+                <div class="buttons">
+                  <a class="button is-primary" href="{{ cafe.gmaps }}">
+                    <span class="icon">
+                      <i class="fa-solid fa-map-pin"></i>
+                    </span>
+                    <span>Find me</span>
+                  </a>
+                  <a href="/" class="button is-ghost">Back</a>
+                </div>
+
+                <article class="panel is-link" style="box-shadow: none">
+                  <p class="panel-heading">
+                    Review
+                  </p>
+                    {% for review in cafe_review %}
+                      <a class="panel-block">
+                        {{ review.review_text }}
+                      </a>
+                      {% empty %}
+                        <a class="panel-block" href="#">
+                          <i>Empty</i>
+                        </a>
+                    {% endfor %}
+                </article>
+                <!-- END CONTENT -->
+              </div>
+            </div>
+          </div>
+          <!-- END COLUMN -->
+      </div>
+
+
+    </div>
+  </section>
+{% endblock main %}

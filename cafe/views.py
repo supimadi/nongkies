@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import UpdateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 
-from .models import Cafes, Reviewer
+from .models import Cafes, Reviewer, CafeReview
 
 def home_page(request):
     ctx = {
@@ -16,11 +16,29 @@ def home_page(request):
 
     return render(request, "cafe/home.html", ctx)
 
+def cafe_detail(request, pk):
+
+    cafe = get_object_or_404(Cafes, pk=pk)
+    cafe_review = CafeReview.objects.filter(cafe=cafe)
+
+    ctx = {
+        "cafe": cafe,
+        "cafe_review": cafe_review
+    }
+
+    return render(request, "cafe/cafe_detail.html", ctx)
+
 @login_required
 def user_profile(request):
     reviewer = Reviewer.objects.get(account=request.user.pk)
+    reviewed_cafe = CafeReview.objects.filter(user=reviewer)
 
-    return render(request, "cafe/user_profile.html", {"reviewer": reviewer})
+    ctx = {
+        "reviewer": reviewer,
+        "reviewed_cafe": reviewed_cafe
+    }
+
+    return render(request, "cafe/user_profile.html", ctx)
 
 def register(request):
     form = UserCreationForm(request.POST or None)

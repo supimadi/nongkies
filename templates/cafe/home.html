@@ -224,14 +224,16 @@
         {% for cafe in cafes %}
         <div class="cafe-item has-text-centered">
           <img
-            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FmZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+            src="{{ cafe.image.url }}"
             alt="cafe image"
             class="shadow"
           >
-          <h3 class="has-text-primary mt-3">
-            {{ cafe.name }} <br>
-            Rating: {{ cafe.rating }}
-          </h3>
+          <a href="{% url 'cafe-detail' cafe.pk %}">
+            <h3 class="has-text-primary mt-3">
+              {{ cafe.name }} <br>
+              Rating: {{ cafe.rating }}
+            </h3>
+          </a>
           <h6>
             {{ cafe.distance }} Km
           </h6>
@@ -265,53 +267,20 @@
 
       <section class="splide" aria-labelledby="carousel-heading">
         <div class="splide__track">
+              {% for cafe in cafes %}
               <ul class="splide__list">
                   <li class="splide__slide">
                     <div class="cafe-place">
-                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
+                      <img src="{{ cafe.image.url }}" alt="cafe image">
                       <div class="overlay">
                         <div class="text pl-3 pb-3 has-text-left">
-                          <button class="button is-rounded is-primary is-light is-small">Review</button>
-                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
-                          <p class="subtitle" style="color: white;">
-                            Classy, compy, and huge cafe
-                          </p>
+                          <a href="{% url 'cafe-detail' cafe.pk %}" class="button is-rounded is-primary is-light is-small">Review</a>
                         </div>
                       </div>
                     </div>
                   </li>
-
-                  <li class="splide__slide">
-                    <div class="cafe-place">
-                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
-                      <div class="overlay">
-                        <div class="text pl-3 pb-3 has-text-left">
-                          <button class="button is-rounded is-primary is-light is-small">Review</button>
-                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
-                          <p class="subtitle" style="color: white;">
-                            Classy, compy, and huge cafe
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li class="splide__slide">
-                    <div class="cafe-place">
-                      <img src="https://images.pexels.com/photos/3768225/pexels-photo-3768225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="cafe image">
-                      <div class="overlay">
-                        <div class="text pl-3 pb-3 has-text-left">
-                          <button class="button is-rounded is-primary is-light is-small">Review</button>
-                          <p class="has-text-grey-light"><small>Date: 3 Feb 2022</small></p>
-                          <p class="subtitle" style="color: white;">
-                            Classy, compy, and huge cafe
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
               </ul>
+              {% endfor %}
         </div>
       </section>
 

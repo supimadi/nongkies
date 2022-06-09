@@ -12,6 +12,8 @@ class Reviewer(models.Model):
 
 class Cafes(models.Model):
     name = models.CharField("Nama Cafe", max_length=100)
+    address = models.CharField("Alamat", max_length=120, null=True)
+    desc = models.TextField("Deskripsi", null=True)
     rating = models.FloatField("Rating", max_length=1, help_text="Rating 1-5")
     distance = models.CharField("Jarak", max_length=100, help_text="Isi dalam satuan kilometer (KM)")
     long = models.CharField("Longtitude", max_length=50)
@@ -32,7 +34,7 @@ class CafeReview(models.Model):
     review_text = models.TextField()
     
     def __str__(self):
-        return f"Review {self.user.username}"
+        return f"Review {self.user.account.username}"
 
 class CafePromo(models.Model):
     cafe = models.ForeignKey(Cafes, on_delete=models.CASCADE)
