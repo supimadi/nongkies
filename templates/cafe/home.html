@@ -224,7 +224,7 @@
         {% for cafe in cafes %}
         <div class="cafe-item has-text-centered">
           <img
-            src="{{ cafe.image.url }}"
+            src="{{ cafe.image }}"
             alt="cafe image"
             class="shadow"
           >
@@ -271,7 +271,7 @@
               <ul class="splide__list">
                   <li class="splide__slide">
                     <div class="cafe-place">
-                      <img src="{{ cafe.image.url }}" alt="cafe image">
+                      <img src="{{ cafe.image }}" alt="cafe image">
                       <div class="overlay">
                         <div class="text pl-3 pb-3 has-text-left">
                           <a href="{% url 'cafe-detail' cafe.pk %}" class="button is-rounded is-primary is-light is-small">Review</a>
